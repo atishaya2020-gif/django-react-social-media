@@ -9,7 +9,11 @@ from django.contrib.auth.models import User
 from .permissions import IsProfileOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer, RegisterSerializer
-
+from rest_framework.permissions import (
+    IsAuthenticated,
+    IsAuthenticatedOrReadOnly,
+    AllowAny,
+)
 
 class ProfileViewSet(ModelViewSet):
 
@@ -22,6 +26,12 @@ class ProfileViewSet(ModelViewSet):
     ]
 
     def get_permissions(self):
+
+        if self.action in [
+            "list",
+            "retrieve",
+        ]:
+            return [IsAuthenticatedOrReadOnly()]
 
         if self.action == "follow":
             return [IsAuthenticated()]
