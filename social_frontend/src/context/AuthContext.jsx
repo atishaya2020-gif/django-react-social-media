@@ -101,13 +101,13 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (username, email, password) => {
-    const { data } = await axios.post("/api/register/", {
-      username,
-      email,
-      password,
-    });
-    return data;
-  };
+  const { data } = await api.post("/api/register/", {
+    username,
+    email,
+    password,
+  });
+  return data;
+};
 
   const logout = () => {
     clearTokens();
