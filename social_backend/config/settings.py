@@ -216,6 +216,11 @@ SIMPLE_JWT = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://django-react-social-media.vercel.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://django-react-social-media.vercel.app",
 ]
 
 # -------------------------------------------------
