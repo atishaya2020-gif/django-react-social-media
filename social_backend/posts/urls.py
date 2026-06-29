@@ -2,23 +2,19 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     PostViewSet,
-    CommentViewSet
+    CommentViewSet,
 )
-
 
 router = DefaultRouter()
 
-
 router.register(
     "posts",
-    PostViewSet
+    PostViewSet,
 )
-
 
 router.register(
     "comments",
-    CommentViewSet
+    CommentViewSet,
 )
-
 
 urlpatterns = router.urls
