@@ -1,9 +1,10 @@
-export const API_BASE_URL = "";
+export const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "";
 
-export const API_URL = `/api`;
+export const API_URL = `${API_BASE_URL}/api`;
 
-export const TOKEN_URL = `/api/token/`;
-export const REFRESH_URL = `/api/token/refresh/`;
+export const TOKEN_URL = `${API_BASE_URL}/api/token/`;
+export const REFRESH_URL = `${API_BASE_URL}/api/token/refresh/`;
 
 export const ACCESS_TOKEN_KEY = "nexus_access";
 export const REFRESH_TOKEN_KEY = "nexus_refresh";

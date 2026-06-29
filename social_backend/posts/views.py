@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
-
+from rest_framework.parsers import MultiPartParser, FormParser
 from .permissions import IsOwnerOrReadOnly
 from .models import Post, Comment
 from .serializers import PostSerializer, CommentSerializer
@@ -20,6 +20,8 @@ class PostViewSet(ModelViewSet):
     queryset = Post.objects.all().order_by("-created_at")
 
     serializer_class = PostSerializer
+
+    parser_classes = [MultiPartParser, FormParser]
 
     filter_backends = [
         DjangoFilterBackend,
