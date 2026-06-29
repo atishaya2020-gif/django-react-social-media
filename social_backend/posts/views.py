@@ -63,7 +63,14 @@ class PostViewSet(ModelViewSet):
         ]
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        try:
+            serializer.save(user=self.request.user)
+        except Exception as e:
+            print("=" * 80)
+            print("POST CREATE ERROR:")
+            print(repr(e))
+            print("=" * 80)
+            raise
 
     @action(detail=True, methods=["POST"])
     def like(self, request, pk=None):
